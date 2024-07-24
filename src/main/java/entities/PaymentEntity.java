@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name="payment")
-public class Payment {
+public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -20,9 +20,9 @@ public class Payment {
     private int recipient;
     private String message;
 
-    protected Payment(){}
+    public PaymentEntity(){}
 
-    public Payment(Date date, double amount, int recipient, String message) {
+    public PaymentEntity(Date date, double amount, int recipient, String message) {
         this.date = date;
         this.amount = amount;
         this.recipient = recipient;
