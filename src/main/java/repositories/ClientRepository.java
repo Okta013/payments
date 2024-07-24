@@ -11,9 +11,9 @@ import java.util.List;
 
 public interface ClientRepository extends CrudRepository<ClientEntity, Long> {
 
-    /*List<ClientEntity> findAll();
+    List<ClientEntity> findAll();
 
-    ClientEntity findById(int clientId);
+    /*ClientEntity findById(int clientId);
 
     @Override
     <S extends ClientEntity> S save(S entity);
