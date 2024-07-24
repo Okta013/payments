@@ -1,4 +1,4 @@
-package models;
+package entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="client")
-public class Client {
+public class ClientEntity {
     @Id
     @GeneratedValue (strategy= GenerationType.AUTO)
     private int id;
@@ -16,9 +16,9 @@ public class Client {
     private String phone;
     private double balancing;
 
-    protected Client() {}
+    public ClientEntity() {}
 
-    public Client(String name, String phone, double balancing) {
+    public ClientEntity(String name, String phone, double balancing) {
         this.name = name;
         this.phone = phone;
         this.balancing = balancing;
