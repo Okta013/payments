@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -19,6 +21,9 @@ public class ClientEntity {
     private String phone;
     @Column(name="balance")
     private double balancing;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    private Set<PaymentEntity> books;
 
     public ClientEntity() {}
 

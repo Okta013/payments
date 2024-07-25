@@ -24,6 +24,10 @@ public class PaymentEntity {
     @Column(name="message")
     private String message;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "recepient_id", nullable = false)
+    private ClientEntity clientEntity;
+
     public PaymentEntity(){}
 
     public PaymentEntity(Date date, double amount, int recipient, String message) {
