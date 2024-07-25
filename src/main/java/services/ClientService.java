@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import repositories.ClientRepository;
 import utils.MappingUtils;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
