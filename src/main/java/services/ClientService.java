@@ -2,8 +2,9 @@ package services;
 
 import dto.ClientDto;
 import entities.ClientEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import repositories.ClientRepository;
 import utils.MappingUtils;
 
@@ -49,6 +50,20 @@ public class ClientService {
         clientRepository.deleteById(id);
     }
 
-
-
+    @Transactional
+    public void pay(Long idDonor, Long idRecepient, Double amount) {
+        try {
+            ClientEntity donorEntity = clientRepository.findById(idDonor).orElseThrow(()
+                    -> new RuntimeException("Client not found"));
+            ClientEntity recepientEntity = clientRepository.findById(idRecepient).orElseThrow(()
+                    -> new RuntimeException("Client not found"));
+            donorEntity.setBalancing(donorEntity.getBalancing() - amount);
+            recepientEntity.setBalancing(recepientEntity.getBalancing() + amount);
+            clientRepository.save(donorEntity);
+            clientRepository.save(recepientEntity);
+        }
+        catch (RuntimeException e) {
+            throw e;
+        }
+    }
 }
